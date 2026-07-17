@@ -1,5 +1,5 @@
-#ifndef INT_VECTOR_H
-#define INT_VECTOR_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <stddef.h>
 

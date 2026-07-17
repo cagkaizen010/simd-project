@@ -4,8 +4,23 @@
 #include <time.h>
 #include "vector.h"
 
-void kernel(int n, Vector* b) {
-    printf("%lf\n", vector_get(b, 1));
+typedef struct {
+    double ESUM;
+    double OSUM;
+}   KernelResult;
+
+KernelResult kernel(int n, Vector* b) {
+    KernelResult result;
+    result.ESUM = 0;
+    result.OSUM = 0;
+
+    for(size_t i = 0; i < n; i++){
+        // printf("%lf\n", vector_get(b, i));
+        if(i %2 == 0) result.ESUM += vector_get(b,i);
+        else result.OSUM += vector_get(b,i);
+
+    }
+    return result;
 }
 
 double get_random_double(double min, double max){
@@ -17,7 +32,7 @@ int main() {
     srand(time(NULL));  // So that we can actually get random numbers
 
     // value is 2^n, where n is the input
-    int n= 4;
+    int n= 27;
     double min = 0.0;
     double max= 20.0;
     
@@ -30,7 +45,8 @@ int main() {
         vector_push_back(&b, get_random_double(min, max));
     }
 
-    kernel(size, &b);
+    KernelResult result = kernel(size, &b);
+    printf("Even Sum: %lf\nOdd Sum: %lf\n", result.ESUM, result.OSUM);
     
     vector_free(&b);
     return 0;
