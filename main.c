@@ -25,14 +25,9 @@ KernelResult kernel(int n, Vector* b) {
     return result;
 }
 
-double get_random_double(double min, double max){
-    double scale = (double) rand() / (double) RAND_MAX;
-    return min + scale*(max-min);
-}
 
 void test_vector_size(size_t size, const char* label) {
     struct timespec start, end;
-    double min = 0.0, max = 20.0;
     int iterations = 30;
 
     Vector b;
@@ -44,7 +39,8 @@ void test_vector_size(size_t size, const char* label) {
 
     printf("Populating vector...\n");
     for(size_t i = 0; i < size; i++){
-        vector_push_back(&b, get_random_double(min, max));
+        // vector_push_back(&b, get_random_double(min, max));
+        vector_push_back(&b, i+1);
     }
 
     // --- C Kernel ---
