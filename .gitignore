@@ -1,2 +1,4 @@
 *.o
 main
+nasm-3.02/
+.ipynb_checkpoints/
