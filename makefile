@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -O2
 LDFLAGS = -lm
 
-ASM = nasm
+ASM = ./nasm-3.02/nasm
 ASMFLAGS = -f elf64
 
 # Output executable name
